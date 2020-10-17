@@ -27,4 +27,28 @@ const icon = L.icon({
 L
 .marker([-27.213541,-49.6447389], { icon })
 .addTo(map)
-.bindPopup(popup)
+
+
+/* image gallery */
+
+function selectImage(event) {
+    const button = event.currentTarget
+
+    // remover todas as classes .atvive
+    const buttons = document.querySelectorAll(".images button")
+    buttons.forEach(removeactiveclass)
+
+    function removeactiveclass(button) {
+        button.classList.remove("active")
+    }
+
+    // selecionar a image clicada
+    const image = button.children[0]
+    const imageContainer = document.querySelector(".orphanage-details > img")
+
+    // atualizar o container de image
+    imageContainer.src = image.src
+
+    // add a classe .ative para este botão
+    button.classList.add("active")
+}
